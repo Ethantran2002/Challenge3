@@ -31,10 +31,9 @@ if (requireLowercase !== true && requireUppercase !== true && requireNumbers !==
   alert("Please select at least one character type.")
   return;
 }
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+  // Write password to the #password input
+function generatePassword() {
+  var password = writePassword();
   var passwordText = document.querySelector("#password");
   
   for (let i = 0; i < passLength; i++) {
@@ -42,33 +41,61 @@ function writePassword() {
     password = password + charTypes.charAt(Math.floor(Math.random() * Math.floor(charTypes.length - 1)));
     
     passwordText.value = password;
+    
   }
-}
-
+  //1
 if (requireLowercase && !requireUppercase && !requireNumbers && !requireSpecial) {
   charTypes = lowercaseAlpha;
   generatePassword();
-
+// 1 & 2
 } 
 else if (requireLowercase && requireUppercase && !requireNumbers && !requireSpecial) {
   charTypes = lowercaseAlpha + uppercaseAlpha;
+  generatePassword();
+// 1, 2, 3
 } 
 else if (requireLowercase && requireUppercase && requireNumbers && !requireSpecial) {
   charTypes = lowercaseAlpha + uppercaseAlpha + numChars;
+  generatePassword();
+// 1, 2, 3, 4
 }
 else if (requireLowercase && requireUppercase && requireNumbers && requireSpecial) {
   charTypes = lowercaseAlpha + uppercaseAlpha + numChars + specialChars;
+  generatePassword();
+// 2
 }
 else if (!requireLowercase && requireUppercase && !requireNumbers && !requireSpecial) {
   charTypes = uppercaseAlpha;
+  generatePassword();
+// 2 & 3
 } 
 else if (!requireLowercase && requireUppercase && requireNumbers && !requireSpecial) {
   charTypes = uppercaseAlpha + numChars;
+  generatePassword();
+// 2, 3, 4
 }
-else
+else if (!requireLowercase && requireUppercase && requireNumbers && requireSpecial) {
+  charTypes = uppercaseAlpha + numChars + specialChars;
+  generatePassword();
+// 3
+}
+else if (!requireLowercase && !requireUppercase && requireNumbers && !requireSpecial) {
+  charTypes = numChars;
+  generatePassword();
+// 3 4
+}
+else if (!requireLowercase && !requireUppercase && requireNumbers && requireSpecial) {
+  charTypes = numChars + specialChars;
+  generatePassword();
+}
+// 1 2 4
+else if (requireLowercase && requireUppercase && !requireNumbers && requireSpecial) {
+  charTypes = uppercaseAlpha + lowercaseAlpha + specialChars;
+  generatePassword();
   
+}
+passwordText.value = password
+console.log(password);
 
-
-
-
+}
 })
